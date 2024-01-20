@@ -11,26 +11,18 @@ device = "cuda" if torch.cuda.is_available() else "cpu"
 print("Device: ", device)
 #%%
 
-# Step 1: Load Pretrained Model and Tokenizer
 tokenizer = AutoTokenizer.from_pretrained("textattack/bert-base-uncased-yelp-polarity")
 model = BertForSequenceClassification.from_pretrained("textattack/bert-base-uncased-yelp-polarity")
 
 #%%
-# print(model)
-#%%
 def sentiment_analysis(text):
-    # Step 2: Preprocess Text
     inputs = tokenizer(text, padding=True, truncation=True, max_length=512, return_tensors="pt")
 
-    # Step 3: Predict Sentiment
     with torch.no_grad():
         outputs = model(**inputs)
         predictions = softmax(outputs.logits, dim=1)
 
-    # Mapping indices to sentiment
     sentiment_map = {0: "Negative", 1: "Positive"}
-
-    # Step 4: Interpret Results
     sentiment_score, sentiment_index = torch.max(predictions, dim=1)
     sentiment_label = sentiment_map[int(sentiment_index)]
 
