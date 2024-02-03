@@ -1,0 +1,6 @@
+![image](https://github.com/jiuyuanx/94812/assets/122936191/7055039b-b83b-4ffc-86b4-794026e23c46)
+
+In the graph:
+Bars are of 20 topics shown in legend, bar height shows average numbers in 18 NER. Red color means positive sentiment, while blue means negative sentiment.
+Negative sentiment are often associated with topics including government, policy, police, fraud, economy... and NER has more number of Date, Law, NORP...
+Positive sentiment are often associated iwth topics including film, music, game technology... and NER has more work_of_art, product, time, person...
